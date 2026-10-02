@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ArticleCard from "@/components/ArticleCard";
 import Breadcrumb from "@/components/Breadcrumb";
+import NewsTabs from "@/components/NewsTabs";
 import { ALL_ARTICLES, NEWS_PAGE } from "@/data/articles";
 
 export const metadata: Metadata = {
@@ -23,12 +23,7 @@ export default function NewsPage() {
 
       <section className="bg-surface">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-          <h2 className="sr-only">All articles</h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {ALL_ARTICLES.map((a) => (
-              <ArticleCard key={a.slug} article={a} />
-            ))}
-          </div>
+          <NewsTabs articles={ALL_ARTICLES} />
         </div>
       </section>
     </>

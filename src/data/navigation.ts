@@ -9,14 +9,14 @@ export const MENU: MenuItem[] = [
     label: "About HEPRRP",
     items: [
       { label: "Overview", desc: "What HEPRRP is and why it exists", href: "/#about" },
-      { label: "Objectives & Components", desc: "The program's goals and three phases", href: "/#phases" },
+      { label: "Objectives & Components", desc: "IGAD's three components and what they have achieved", href: "/about/components" },
       { label: "Governance & Implementation", desc: "Who oversees the program and how it runs", href: "/#governance" },
     ],
   },
   {
     label: "Implementing Partners",
     items: [
-      { label: "IGAD", desc: "Intergovernmental Authority on Development", href: "/#partners-igad" },
+      { label: "IGAD", desc: "Intergovernmental Authority on Development", href: "/about/igad" },
       { label: "ECSA", desc: "East, Central and Southern Africa Health Community", href: "/#partners-ecsa" },
     ],
   },
@@ -24,16 +24,17 @@ export const MENU: MenuItem[] = [
   {
     label: "Communities of Practice",
     items: [
-      { label: "All communities", desc: "Overview of every community of practice", href: "/#communities" },
-      { label: "Community pages", desc: "Members, discussions and resources", href: "/#communities-pages" },
-      { label: "Join a Community", desc: "Sign up to take part", href: "/#communities-join", action: true },
+      { label: "All communities", desc: "Overview of every community of practice", href: "/communities" },
+      { label: "Climate and Health", desc: "Preparing health systems for climate shocks", href: "/communities/climate-and-health" },
+      { label: "Local Manufacturing", desc: "Regional vaccine and medicine production", href: "/communities/local-manufacturing" },
+      { label: "NCDs and Mental Health", desc: "Noncommunicable diseases in emergency planning", href: "/communities/ncds-and-mental-health" },
+      { label: "Workforce Development", desc: "Field epidemiology training programmes", href: "/communities/workforce-development" },
     ],
   },
   {
-    label: "News & Blogs",
+    label: "News and Events",
     items: [
-      { label: "News", desc: "Program announcements and updates", href: "/news" },
-      { label: "Blogs", desc: "Perspectives from partners and experts", href: "/news" },
+      { label: "News & Blogs", desc: "Announcements, stories and perspectives", href: "/news" },
       { label: "Events", desc: "Upcoming meetings, trainings and webinars", href: "/#events" },
     ],
   },

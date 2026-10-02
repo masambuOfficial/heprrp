@@ -6,7 +6,7 @@ import { ChevronLeft } from "lucide-react";
 import ArticleCard from "@/components/ArticleCard";
 import Breadcrumb from "@/components/Breadcrumb";
 import SlideArt from "@/components/SlideArt";
-import { ALL_ARTICLES, ARTICLES, NEWS_PAGE, formatDate, getArticle } from "@/data/articles";
+import { ALL_ARTICLES, ARTICLES, NEWS_PAGE, formatDate, getArticle, listHref } from "@/data/articles";
 
 type Params = { slug: string };
 
@@ -30,13 +30,14 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
   const a = getArticle(slug);
   if (!a) notFound();
 
+  const backHref = listHref(a);
   const more = ALL_ARTICLES.filter((x) => x.slug !== a.slug).slice(0, 3);
 
   return (
     <>
       <section className="bg-navy text-white">
         <div className="clear-logo mx-auto max-w-4xl px-4 pb-12 sm:px-6 lg:px-8">
-          <Breadcrumb trail={[{ label: "Home", href: "/" }, { label: NEWS_PAGE.label, href: NEWS_PAGE.href }, { label: a.category }]} />
+          <Breadcrumb trail={[{ label: "Home", href: "/" }, { label: NEWS_PAGE.label, href: backHref }, { label: a.category }]} />
           <p className="mb-5 flex flex-wrap items-center gap-3 text-sm">
             <span className="bg-brand px-2.5 py-1 font-semibold text-white">{a.category}</span>
             <time dateTime={a.date} className="text-gray-300">{formatDate(a.date)}</time>
@@ -47,7 +48,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
       </section>
 
       <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-        <Link href={NEWS_PAGE.href} className="mb-8 inline-flex items-center gap-1 text-sm font-semibold text-brand-dark hover:underline">
+        <Link href={backHref} className="mb-8 inline-flex items-center gap-1 text-sm font-semibold text-brand-dark hover:underline">
           <ChevronLeft size={16} /> Back to {NEWS_PAGE.label}
         </Link>
 
@@ -82,7 +83,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
         )}
 
         <div className="mt-12 border-t border-line pt-8">
-          <Link href={NEWS_PAGE.href} className="btn-brand inline-flex items-center gap-1 px-5 py-3 font-semibold">
+          <Link href={backHref} className="btn-brand inline-flex items-center gap-1 px-5 py-3 font-semibold">
             <ChevronLeft size={18} /> Back to {NEWS_PAGE.label}
           </Link>
         </div>

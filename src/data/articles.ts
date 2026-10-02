@@ -2,12 +2,17 @@
  * Every news story and blog post on the site lives here. The hero slideshow, the
  * News & Blogs page and each article page all read from this one list.
  *
- * To add an article: copy an entry, give it a unique `slug`, and fill in the fields.
+ * To add an article: copy an entry, give it a unique `slug`, set its `type` to "news" or "blog",
+ * and fill in the fields. News shows under the News tab and blogs under the Blogs tab.
  * Its page is created automatically at /news/<slug>.
  */
+export type ArticleType = "news" | "blog";
+
 export type Article = {
   /** Unique, URL-safe id. The article lives at /news/<slug> */
   slug: string;
+  /** "news" for announcements and updates, "blog" for perspectives and personal accounts */
+  type: ArticleType;
   title: string;
   /** Short summary shown on cards and in the hero slideshow */
   excerpt: string;
@@ -37,6 +42,7 @@ export type Article = {
 export const ARTICLES: Article[] = [
   {
     slug: "eleven-countries-working-together",
+    type: "news",
     title: "Eleven countries now working together on health emergencies",
     excerpt:
       "With Angola, Botswana and Mozambique newly engaged, the program spans Eastern, Central and Southern Africa, with IGAD and ECSA-HC coordinating regional support.",
@@ -52,6 +58,7 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "regional-advisory-committee-lusaka",
+    type: "news",
     title: "East and Southern Africa Countries Renew Commitment to Health Emergency Preparedness and Response",
     excerpt:
       "Delegates at the 3rd Regional Advisory Committee meeting in Lusaka reaffirmed their commitment to stronger readiness and response, pledging closer collaboration as health emergencies increase across the region.",
@@ -88,6 +95,7 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "climate-and-health-community-of-practice",
+    type: "news",
     title: "A new regional community of practice on climate and health",
     excerpt:
       "Health, environment and climate officials from nine countries met in Machakos, Kenya, to launch a network for sharing evidence and national experience.",
@@ -103,6 +111,7 @@ export const ARTICLES: Article[] = [
   },
   {
     slug: "border-health-risk-assessment-training",
+    type: "news",
     title: "Training experts to assess health risks at borders and points of entry",
     excerpt:
       "Public health experts from five countries trained as trainers in strategic risk assessment and contingency planning for cross-border settings.",
@@ -114,6 +123,71 @@ export const ARTICLES: Article[] = [
     body: [
       "Public health experts from five countries trained as trainers in strategic risk assessment and contingency planning for cross-border settings.",
       "The full story will be added here.",
+    ],
+  },
+  {
+    slug: "ebola-ministerial-meeting",
+    type: "news",
+    title: "IGAD health ministers meet on the Ebola outbreak",
+    excerpt:
+      "IGAD convened its Council of Health Ministers virtually on 29 May 2026, declared the outbreak an event of regional concern and allocated US$ 8.5 million for regional support.",
+    category: "Emergency response",
+    date: "2026-05-29",
+    image: null,
+    art: "rings",
+    body: [
+      "On 29 May 2026, IGAD convened an emergency virtual meeting of its Council of Health Ministers on the Ebola virus disease outbreak, working with regional partners including the World Health Organization, the International Federation of Red Cross and Red Crescent Societies, the Pandemic Fund Secretariat and Africa CDC.",
+      "The ministers declared the outbreak an event of regional concern.",
+      "IGAD allocated US$ 8.5 million from the Pandemic Fund portfolio for regional support: US$ 7 million, or US$ 1 million for each of its seven member states, and a further US$ 1.5 million for technical assistance and regional coordination.",
+      "IGAD also developed and shared a guidance note on Ebola virus disease, and prioritised preparedness and response activities at cross-border settings.",
+    ],
+  },
+  {
+    slug: "burundi-field-epidemiology-training",
+    type: "news",
+    title: "Burundi moves to establish an Intermediate Field Epidemiology Training Program",
+    excerpt:
+      "A stakeholder meeting in Bujumbura brought partners together to plan the program, with the first cohort expected in October 2026.",
+    category: "Workforce development",
+    date: "2026-05-21",
+    image: null,
+    art: "grid",
+    body: [
+      "From 19 to 21 May 2026, IGAD supported a stakeholder meeting in Bujumbura, Burundi, to help the Ministry of Health establish an Intermediate Field Epidemiology Training Program (I-FETP).",
+      "AFENET, FAO, WHO and Africa CDC attended alongside the Ministry of Health and other line sectors. A technical working group was formed to move the discussion forward, and a steering committee will be established.",
+      "The first cohort of the Intermediate program is planned to launch in October 2026. The Ministry has asked for technical assistance focused on training trainers and mentors.",
+      "The curriculum has also been reviewed and validated, with content on antimicrobial resistance, infection prevention and control, and climate and health to be developed and added.",
+    ],
+  },
+  {
+    slug: "genpar-regional-training-addis-ababa",
+    type: "news",
+    title: "Eleven countries train on gender and equity in health emergencies",
+    excerpt:
+      "The regional GENPAR training in Addis Ababa helped countries build gender and equity into their preparedness and response work.",
+    category: "Gender and equity",
+    date: "2026-03-31",
+    image: null,
+    art: "waves",
+    body: [
+      "In March 2026, the regional GENPAR training in Addis Ababa, Ethiopia, brought together participants from all eleven participating countries.",
+      "The training built a shared understanding of the GENPAR toolkit, strengthened understanding of the gender and equity factors that shape health emergencies, and improved skills in collecting and analysing disaggregated data. Each country developed an action plan.",
+      "Afterwards, countries received virtual technical assistance to build gender and equity into their annual work plans, and national training of trainers sessions were delivered in selected countries, including Ethiopia. Tailored support also helped DRC integrate gender and equity into its Ebola surveillance and response.",
+    ],
+  },
+  {
+    slug: "ncd-mental-health-peer-learning-rwanda",
+    type: "news",
+    title: "Peer learning mission to Rwanda on NCDs, mental health and digital health",
+    excerpt:
+      "Experts from participating countries visited Rwanda from 20 to 24 July 2026 to learn from its experience.",
+    category: "Communities of Practice",
+    date: "2026-07-24",
+    image: null,
+    art: "map",
+    body: [
+      "From 20 to 24 July 2026, experts from participating countries took part in a peer learning mission to Rwanda to learn from its experience with noncommunicable diseases, mental health and digital health. The Rwanda Biomedical Centre hosted the visit.",
+      "The mission followed the fourth meeting of the Community of Practice on NCDs and Mental Health in June, which reviewed 2025 STEPS survey results from Burundi, Ethiopia and DRC and Rwanda's experience with child and adolescent mental health.",
     ],
   },
 ];
@@ -129,6 +203,16 @@ export const getArticle = (slug: string): Article | undefined => ARTICLES.find((
 export const articleHref = (a: Pick<Article, "slug">): string => `/news/${a.slug}`;
 
 export const NEWS_PAGE = { label: "News & Blogs", href: "/news" } as const;
+
+/** The tabs on the News & Blogs page. `hash` lets links open a specific tab. */
+export const ARTICLE_TABS: { type: ArticleType; label: string; hash: string; empty: string }[] = [
+  { type: "news", label: "News", hash: "news", empty: "No news yet. Check back soon." },
+  { type: "blog", label: "Blogs", hash: "blogs", empty: "No blog posts yet. Check back soon." },
+];
+
+/** Link to the News & Blogs page opened on the right tab for this article */
+export const listHref = (a: Pick<Article, "type">): string =>
+  `${NEWS_PAGE.href}#${a.type === "blog" ? "blogs" : "news"}`;
 
 /** "2025-11-20" becomes "20 November 2025" */
 export function formatDate(iso: string): string {
