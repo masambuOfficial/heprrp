@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BookOpen, ChevronDown, Menu, X } from "lucide-react";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { NavLogo } from "@/components/Logo";
 import { MENU } from "@/data/navigation";
 import { SITE } from "@/data/site";
@@ -58,14 +59,16 @@ export default function Navbar() {
   return (
     <>
     {/* Scrolls away: top strip and brand row */}
-    <header ref={headerRef} className="relative z-40 bg-white">
+    <header ref={headerRef} className="relative z-[60] bg-white">
       {/* Top strip */}
-      <div className="hidden border-b border-line text-xs text-muted sm:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <p>
+      <div className="border-b border-line text-xs text-muted">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 sm:px-6 lg:px-8">
+          <p className="hidden sm:block">
             <span className="font-semibold text-ink">{SITE.name}</span> · Financed by the World Bank · Eastern, Central and Southern Africa
           </p>
-          <span className="font-medium text-brand-dark">English</span>
+          <div className="ml-auto">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
 
