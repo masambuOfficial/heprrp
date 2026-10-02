@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { BookOpen, ChevronDown, Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { NavLogo } from "@/components/Logo";
+import SocialLinks from "@/components/SocialLinks";
 import { MENU } from "@/data/navigation";
 import { SITE } from "@/data/site";
 
@@ -66,6 +67,7 @@ export default function Navbar() {
           <p className="hidden sm:block">
             <span className="font-semibold text-ink">{SITE.name}</span> · Financed by the World Bank · Eastern, Central and Southern Africa
           </p>
+          <SocialLinks className="sm:hidden" />
           <div className="ml-auto">
             <LanguageSwitcher />
           </div>
@@ -79,7 +81,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2 sm:gap-4">
           <a
             href={SITE.knowledgePortalUrl}
-            className="btn-brand hidden items-center gap-2 rounded px-4 py-2.5 text-sm font-bold uppercase tracking-wide sm:inline-flex"
+            className="btn-brand inline-flex items-center gap-1.5 rounded px-3 py-2 text-xs font-bold uppercase tracking-wide sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm"
           >
             <BookOpen size={16} /> Knowledge Portal
           </a>
@@ -200,12 +202,6 @@ export default function Navbar() {
                 </Link>
               ),
             )}
-            <a
-              href={SITE.knowledgePortalUrl}
-              className="btn-brand mb-3 mt-4 flex w-full items-center justify-center gap-2 rounded-md py-3 font-semibold sm:hidden"
-            >
-              <BookOpen size={18} /> Knowledge Portal
-            </a>
           </nav>
         </div>
       )}

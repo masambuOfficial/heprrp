@@ -7,6 +7,13 @@ export const SITE = {
     "A multi-regional program financed by the World Bank that helps countries in Eastern, Central and Southern Africa prepare for, detect and respond to health emergencies together.",
   // Replace with the real Knowledge Portal address when it is live
   knowledgePortalUrl: "#",
+  // Replace each "#" with the program's real profile address
+  social: [
+    { key: "x", label: "X", href: "#" },
+    { key: "facebook", label: "Facebook", href: "#" },
+    { key: "linkedin", label: "LinkedIn", href: "#" },
+    { key: "youtube", label: "YouTube", href: "#" },
+  ] as const,
   logo: {
     // Logo lives in public/images/
     src: "/images/HEPRRP_Logo.webp",
